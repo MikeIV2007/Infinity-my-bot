@@ -168,14 +168,13 @@ def input_error(func):
         except IndexError:
             return "Error: Contact not found. Please try again."
         except PhoneMustBeNumber as e:
-            return ("PhoneMustBeNumber: ", e)
+            return f"PhoneMustBeNumber: {e}"
         except BirthdayException as e:
-            return ("BirthdayException: ", e)
-        except EmailException:
-            return "incorrect email"
+            return f"BirthdayException: {e}"
+        except EmailException as e:
+            return f"EmailException: {e}"
         except Name_Error as e: 
             return f"Name_error : {e}"
-            #return f"Name_error : {str(e)}"
         except TypeError:
             return "Format birthday must be YYYY/MM/DD"
     return wrapper

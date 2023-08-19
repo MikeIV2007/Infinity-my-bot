@@ -20,7 +20,7 @@ class Name:
 
         if value == None or len(value) == 0:
             raise Name_Error(f"Name cannot be empty")
-        if len(value) < 3:
+        if len(value) < 2:
             raise Name_Error(f"Name must have at least 2 symbols: {value}")
         self.__value = value
 
