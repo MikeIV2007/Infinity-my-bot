@@ -11,4 +11,5 @@ class EmailException(Exception):
 
 
 class Name_Error(Exception):
-    pass
+    def __str__(self) -> str:
+        return super().__str__()

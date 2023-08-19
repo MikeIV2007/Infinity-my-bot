@@ -173,10 +173,9 @@ def input_error(func):
             return ("BirthdayException: ", e)
         except EmailException:
             return "incorrect email"
-        except Name_Error as e:
-            print (177, e, type(e), e.args)
-            error_message = f"Name_error : {str(e)}"
-            return error_message
+        except Name_Error as e: 
+            return f"Name_error : {e}"
+            #return f"Name_error : {str(e)}"
         except TypeError:
             return "Format birthday must be YYYY/MM/DD"
     return wrapper
