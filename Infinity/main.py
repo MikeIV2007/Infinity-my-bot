@@ -2,13 +2,13 @@ import re
 from Infinity.record import Record
 from Infinity.email_class import Email
 from Infinity.address_class import Address
-from Infinity.name import Name, NameError
+from Infinity.name import Name, Name_Error
 from Infinity.phone import Phone
 from Infinity.birthday import Birthday
 from Infinity.address_book import AddressBook
 from rich import print
 from rich.table import Table
-from Infinity.exceptions import PhoneMustBeNumber, BirthdayException, EmailException, NameError
+from Infinity.exceptions import PhoneMustBeNumber, BirthdayException, EmailException, Name_Error
 from Infinity.sort_folder import sort
 from Infinity.suggest import suggest_command
 from Infinity.note import note_book
@@ -169,11 +169,11 @@ def input_error(func):
             return "Error: Contact not found. Please try again."
         except PhoneMustBeNumber as e:
             return ("PhoneMustBeNumber: ", e)
-        except BirthdayException:
+        except BirthdayException as e:
             return ("BirthdayException: ", e)
         except EmailException:
             return "incorrect email"
-        except NameError as e:
+        except Name_Error as e:
             return ("NameError: ", e)
         except TypeError:
             return "Format birthday must be YYYY/MM/DD"

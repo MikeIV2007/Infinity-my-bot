@@ -10,5 +10,5 @@ class EmailException(Exception):
     pass
 
 
-class NameError(Exception):
+class Name_Error(Exception):
     pass
