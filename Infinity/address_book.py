@@ -1,4 +1,4 @@
-from Infinity.record import Record
+from record import Record
 from collections import UserDict
 import pickle
 
@@ -99,7 +99,7 @@ class AddressBook(UserDict):
             else:
                 for email in user_emails:
                     user_emails_list.append(email.value)
-                emails_str = ' ,'.join(user_emails_list).strip()
+                emails_str = ', '.join(user_emails_list).strip()
 
             user_data = [user_name, phones_str,
                          emails_str, user_birthday, user_address]

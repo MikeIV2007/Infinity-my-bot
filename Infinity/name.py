@@ -1,4 +1,4 @@
-from Infinity.exceptions import Name_Error
+from exceptions import Name_Error
 
 
 class Name:

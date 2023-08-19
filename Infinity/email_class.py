@@ -1,4 +1,4 @@
-from Infinity.exceptions import EmailException
+from exceptions import EmailException
 import re
 
 

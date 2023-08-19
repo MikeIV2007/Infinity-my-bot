@@ -1,4 +1,4 @@
-from Infinity.exceptions import BirthdayException
+from exceptions import BirthdayException
 from datetime import datetime, date
 
 
@@ -21,7 +21,7 @@ class Birthday:
 
     def __str__(self) -> str:
         if self._value:
-            return self._value.strftime("%d-%m-%Y")
+            return self._value.strftime("%Y-%m-%d")
 
     def __repr__(self) -> str:
         return str(self)

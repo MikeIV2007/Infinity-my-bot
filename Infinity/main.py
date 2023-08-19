@@ -1,17 +1,17 @@
 import re
-from Infinity.record import Record
-from Infinity.email_class import Email
-from Infinity.address_class import Address
-from Infinity.name import Name, Name_Error
-from Infinity.phone import Phone
-from Infinity.birthday import Birthday
-from Infinity.address_book import AddressBook
+from record import Record
+from email_class import Email
+from address_class import Address
+from name import Name, Name_Error
+from phone import Phone
+from birthday import Birthday
+from address_book import AddressBook
 from rich import print
 from rich.table import Table
-from Infinity.exceptions import PhoneMustBeNumber, BirthdayException, EmailException, Name_Error
-from Infinity.sort_folder import sort
-from Infinity.suggest import suggest_command
-from Infinity.note import note_book
+from exceptions import PhoneMustBeNumber, BirthdayException, EmailException, Name_Error
+from sort_folder import sort
+from suggest import suggest_command
+from note import note_book
 
 I = 1
 
@@ -270,9 +270,9 @@ def add_birthday_command(args):
         birthday = Birthday(args[1][0])
         record = address_book[name]
         if record.birthday:
-            return f"Contact with name {name} already has a date of birth"
+            return f"Contact with name: {name} already has a date of birth"
         record.add_birthday(birthday)
-        return f"Birthday to contact {name} has been added"
+        return f"Birthday: {birthday} to contact: {name} has been added"
     else:
         raise ValueError
 
@@ -312,10 +312,10 @@ def add_email_command(args):
         name = args[0]
         record = address_book[name]
         if name not in address_book.data:
-            return f"You dont have contact with name {name}"
+            return f"You dont have contact with name: {name}"
         email = Email(args[1][0])
         record.add_email(email)
-        return f"Email for contact {name} has been added"
+        return f"Email: {email} for contact: {name} has been added"
     else:
         raise ValueError
 
