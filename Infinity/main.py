@@ -5,7 +5,7 @@ from Infinity.address_class import Address
 from Infinity.name import Name, NameError
 from Infinity.phone import Phone
 from Infinity.birthday import Birthday
-from Infinity.address_book import AdressBook
+from Infinity.address_book import AddressBook
 from rich import print
 from rich.table import Table
 from Infinity.exceptions import PhoneMustBeNumber, BirthdayException, EmailException, NameError
@@ -15,7 +15,7 @@ from Infinity.note import note_book
 
 I = 1
 
-address_book = AdressBook()
+address_book = AddressBook()
 
 
 def sort_folder_command(args):
