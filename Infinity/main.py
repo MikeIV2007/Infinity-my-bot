@@ -1,4 +1,5 @@
 import re
+import os
 from record import Record
 from email_class import Email
 from address_class import Address
@@ -440,6 +441,11 @@ def parser(user_input: str):
 
     return no_command, user_input
 
+def clear_terminal():
+    if os.name == 'posix':  # For Unix-like systems (Linux, macOS)
+        os.system('clear')
+    elif os.name == 'nt':   # For Windows
+        os.system('cls')
 
 def main():
 
@@ -451,6 +457,8 @@ def main():
 
     while True:
         user_input = (input(f'\nMAIN: Enter command, please!\n\n>>>')).strip()
+
+        clear_terminal()
 
         command, user_info = parser(user_input)
 
