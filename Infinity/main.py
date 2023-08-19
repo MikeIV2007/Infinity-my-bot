@@ -167,14 +167,14 @@ def input_error(func):
             return "Error: Invalid input format. Please try again."
         except IndexError:
             return "Error: Contact not found. Please try again."
-        except PhoneMustBeNumber:
-            return "Phone must have 10 or 12 digits!"
+        except PhoneMustBeNumber as e:
+            return ("PhoneMustBeNumber", e)
         except BirthdayException:
-            return "Format birthday must be in format YYYY-MM-DD"
+            return ("BirthdayException: ", e)
         except EmailException:
             return "incorrect email"
-        except NameError:
-            return ("Name must have at least 3 symbols")
+        except NameError as e:
+            return ("NameError:", e)
         except TypeError:
             return "Format birthday must be YYYY/MM/DD"
     return wrapper

@@ -16,7 +16,7 @@ class Phone:
     def value(self, value):
         sanytized_ph = sanitize_phone_number(value)
         if sanytized_ph == None:
-            raise PhoneMustBeNumber
+            raise PhoneMustBeNumber(f"Phone must have 10 or 12 digits: {value} ")
         self.__value = sanytized_ph
 
     def __str__(self) -> str:

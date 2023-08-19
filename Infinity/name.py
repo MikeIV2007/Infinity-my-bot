@@ -18,5 +18,7 @@ class Name:
     @value.setter
     def value(self, value):
         if len(value) < 3:
-            raise NameError
+            raise NameError(f"Name must have at least 2 symbols: {value}")
+        if len(value) == None:
+            raise NameError(f"Name cannot be empty")
         self.__value = value

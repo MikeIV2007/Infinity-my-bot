@@ -16,7 +16,7 @@ class Birthday:
         try:
             self._value = datetime.strptime(value, "%Y/%m/%d")
         except:
-            raise BirthdayException
+            raise BirthdayException(f"Format birthday must be in format YYYY-MM-DD: {value}")
 
     def __str__(self) -> str:
         if self._value:
