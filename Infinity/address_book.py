@@ -92,7 +92,7 @@ class AddressBook(UserDict):
             else:
                 for phone in user_phones:
                     user_phones_list.append(phone.value)
-                phones_str = ' ,'.join(user_phones_list).strip()
+                phones_str = ', '.join(user_phones_list).strip()
 
             if record.emails == None or record.emails == []:
                 emails_str = 'N/A'

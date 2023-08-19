@@ -174,7 +174,8 @@ def input_error(func):
         except EmailException:
             return "incorrect email"
         except NameError as e:
-            return ("NameError:", e)
+            #return ("NameError:", e)
+            print ("NameError:", e)
         except TypeError:
             return "Format birthday must be YYYY/MM/DD"
     return wrapper
@@ -421,7 +422,7 @@ def get_user_name(user_info: str) -> tuple:
             word = user_info_list[0]
             match_name = re.match(regex_name, word)
             if match_name and len(match_name.group()) == len(word):
-                name = name + word + ' '
+                name = name + word.capitalize() + ' '
                 user_info_list.remove(word)
             else:
                 break
