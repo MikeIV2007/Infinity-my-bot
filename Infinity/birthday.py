@@ -14,7 +14,8 @@ class Birthday:
     @value.setter
     def value(self, value):
         try:
-            self._value = datetime.strptime(value, "%Y/%m/%d")
+            #self._value = datetime.strptime(value, "%Y/%m/%d")
+            self._value = datetime.strptime(value, "%Y-%m-%d")
         except:
             raise BirthdayException(f"Format birthday must be in format YYYY-MM-DD: {value}")
 
