@@ -1,13 +1,15 @@
 import re
+import os
+from rich.table import Table
+from rich import print
+
 from Infinity.record import Record
 from Infinity.email_class import Email
 from Infinity.address_class import Address
 from Infinity.name import Name, Name_Error
 from Infinity.phone import Phone
 from Infinity.birthday import Birthday
-from Infinity.address_book import AdressBook
-from rich import print
-from rich.table import Table
+from Infinity.address_book import AddressBook
 from Infinity.exceptions import PhoneMustBeNumber, BirthdayException, EmailException, Name_Error
 from Infinity.sort_folder import sort
 from Infinity.suggest import suggest_command
@@ -15,7 +17,7 @@ from Infinity.note import note_book
 
 I = 1
 
-address_book = AdressBook()
+address_book = AddressBook()
 
 
 def sort_folder_command(args):
@@ -167,16 +169,16 @@ def input_error(func):
             return "Error: Invalid input format. Please try again."
         except IndexError:
             return "Error: Contact not found. Please try again."
-        except PhoneMustBeNumber:
-            return "Phone must have 10 or 12 digits!"
-        except BirthdayException:
-            return "Format birthday must be YYYY/MM/DD"
-        except EmailException:
-            return "incorrect email"
-        except Name_Error:
-            return ("Enter name at least 3 symbols")
-        except TypeError:
-            return "Format birthday must be YYYY/MM/DD"
+        except PhoneMustBeNumber as e:
+            return f"PhoneMustBeNumber: {e}"
+        except BirthdayException as e:
+            return f"BirthdayException: {e}"
+        except EmailException as e:
+            return f"EmailException: {e}"
+        except Name_Error as e: 
+            return f"Name_error : {e}"
+        # except TypeError:
+        #     return "Format birthday must be YYYY/MM/DD"
     return wrapper
 
 
@@ -270,9 +272,9 @@ def add_birthday_command(args):
         birthday = Birthday(args[1][0])
         record = address_book[name]
         if record.birthday:
-            return f"Contact with name {name} already has a date of birth"
+            return f"Contact with name: {name} already has a date of birth"
         record.add_birthday(birthday)
-        return f"Birthday to contact {name} has been added"
+        return f"Birthday: {birthday} to contact: {name} has been added"
     else:
         raise ValueError
 
@@ -312,10 +314,10 @@ def add_email_command(args):
         name = args[0]
         record = address_book[name]
         if name not in address_book.data:
-            return f"You dont have contact with name {name}"
+            return f"You dont have contact with name: {name}"
         email = Email(args[1][0])
         record.add_email(email)
-        return f"Email for contact {name} has been added"
+        return f"Email: {email} for contact: {name} has been added"
     else:
         raise ValueError
 
@@ -421,7 +423,7 @@ def get_user_name(user_info: str) -> tuple:
             word = user_info_list[0]
             match_name = re.match(regex_name, word)
             if match_name and len(match_name.group()) == len(word):
-                name = name + word + ' '
+                name = name + word.capitalize() + ' '
                 user_info_list.remove(word)
             else:
                 break
@@ -440,6 +442,11 @@ def parser(user_input: str):
 
     return no_command, user_input
 
+def clear_terminal():
+    if os.name == 'posix':  # For Unix-like systems (Linux, macOS)
+        os.system('clear')
+    elif os.name == 'nt':   # For Windows
+        os.system('cls')
 
 def main():
 
@@ -451,6 +458,8 @@ def main():
 
     while True:
         user_input = (input(f'\nMAIN: Enter command, please!\n\n>>>')).strip()
+
+        clear_terminal()
 
         command, user_info = parser(user_input)
 

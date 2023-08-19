@@ -1,5 +1,6 @@
-from Infinity.exceptions import EmailException
 import re
+
+from Infinity.exceptions import EmailException
 
 
 class Email:
@@ -16,7 +17,7 @@ class Email:
         if re.match(r"([A-Za-z]{1}[A-Za-z0-9._]{1,}@[A-Za-z]+\.[A-Za-z]+\.[A-Za-z]{2,})|([A-Za-z]{1}[A-Za-z0-9._]{1,}@[A-Za-z]+\.[A-Za-z]{2,})", value):
             self._value = value
         else:
-            raise EmailException
+            raise EmailException(f"Emaile is not correct : {value}")
 
     def __str__(self) -> str:
         return self._value

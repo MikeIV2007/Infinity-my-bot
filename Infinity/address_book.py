@@ -1,9 +1,10 @@
-from Infinity.record import Record
 from collections import UserDict
 import pickle
 
+from Infinity.record import Record
 
-class AdressBook(UserDict):
+
+class AddressBook(UserDict):
 
     def add_record(self, record: Record):
         self.data[record.name.value] = record
@@ -92,14 +93,14 @@ class AdressBook(UserDict):
             else:
                 for phone in user_phones:
                     user_phones_list.append(phone.value)
-                phones_str = ' ,'.join(user_phones_list).strip()
+                phones_str = ', '.join(user_phones_list).strip()
 
             if record.emails == None or record.emails == []:
                 emails_str = 'N/A'
             else:
                 for email in user_emails:
                     user_emails_list.append(email.value)
-                emails_str = ' ,'.join(user_emails_list).strip()
+                emails_str = ', '.join(user_emails_list).strip()
 
             user_data = [user_name, phones_str,
                          emails_str, user_birthday, user_address]
@@ -119,4 +120,7 @@ class AdressBook(UserDict):
 
 
 if __name__ == "__main__":
-    ...
+    print(UserDict.__dict__)
+    c = UserDict
+    print(c.__doc__)
+    

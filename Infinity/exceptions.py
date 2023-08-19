@@ -1,14 +1,18 @@
 class PhoneMustBeNumber(Exception):
-    pass
+    def __str__(self) -> str:
+        return super().__str__()
 
 
 class BirthdayException(Exception):
-    pass
+    def __str__(self) -> str:
+        return super().__str__()
 
 
 class EmailException(Exception):
-    pass
+    def __str__(self) -> str:
+        return super().__str__()
 
 
 class Name_Error(Exception):
-    pass
+    def __str__(self) -> str:
+        return super().__str__()

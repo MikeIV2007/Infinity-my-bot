@@ -1,8 +1,9 @@
+from datetime import datetime
+
 from Infinity.name import Name
 from Infinity.phone import Phone
 from Infinity.birthday import Birthday
 from Infinity.email_class import Email
-from datetime import datetime
 from Infinity.address_class import Address
 
 
@@ -84,5 +85,5 @@ class Record:
         emails = ", ".join(emails) if emails else "N/A"
         birthday = self.birthday.value.date() if self.birthday else "N/A"
         address = self.user_address
-        output += f"{self.name.value}: Phones:{phones}, E-mails: {emails}, Birthday: {str(birthday)}, Address: {address}"
+        output += f"{self.name.value}: Phones: {phones}, E-mails: {emails}, Birthday: {str(birthday)}, Address: {address}"
         return output
