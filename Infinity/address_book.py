@@ -3,7 +3,7 @@ from collections import UserDict
 import pickle
 
 
-class AdressBook(UserDict):
+class AddressBook(UserDict):
 
     def add_record(self, record: Record):
         self.data[record.name.value] = record
@@ -119,4 +119,7 @@ class AdressBook(UserDict):
 
 
 if __name__ == "__main__":
-    ...
+    print(UserDict.__dict__)
+    c = UserDict
+    print(c.__doc__)
+    

@@ -1,4 +1,4 @@
-from Infinity.exceptions import Name_Error
+from Infinity.exceptions import NameError
 
 
 class Name:
@@ -18,5 +18,5 @@ class Name:
     @value.setter
     def value(self, value):
         if len(value) < 3:
-            raise Name_Error
+            raise NameError
         self.__value = value

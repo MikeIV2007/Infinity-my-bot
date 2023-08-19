@@ -2,13 +2,13 @@ import re
 from Infinity.record import Record
 from Infinity.email_class import Email
 from Infinity.address_class import Address
-from Infinity.name import Name, Name_Error
+from Infinity.name import Name, NameError
 from Infinity.phone import Phone
 from Infinity.birthday import Birthday
 from Infinity.address_book import AdressBook
 from rich import print
 from rich.table import Table
-from Infinity.exceptions import PhoneMustBeNumber, BirthdayException, EmailException, Name_Error
+from Infinity.exceptions import PhoneMustBeNumber, BirthdayException, EmailException, NameError
 from Infinity.sort_folder import sort
 from Infinity.suggest import suggest_command
 from Infinity.note import note_book
@@ -170,11 +170,11 @@ def input_error(func):
         except PhoneMustBeNumber:
             return "Phone must have 10 or 12 digits!"
         except BirthdayException:
-            return "Format birthday must be YYYY/MM/DD"
+            return "Format birthday must be in format YYYY-MM-DD"
         except EmailException:
             return "incorrect email"
-        except Name_Error:
-            return ("Enter name at least 3 symbols")
+        except NameError:
+            return ("Name must have at least 3 symbols")
         except TypeError:
             return "Format birthday must be YYYY/MM/DD"
     return wrapper
